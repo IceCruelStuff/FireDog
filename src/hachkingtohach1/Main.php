@@ -115,12 +115,9 @@ class Main extends PluginBase implements Listener {
 			if(!$entity instanceof Player) return;
 			
             if($damager instanceof Player) {
-				
-				for ($i = (int)$this->getConfig()->get("cps_hacking"); $i >= 100; $i++) {
-				    if($this->getCpsAntiHack($damager) >= $i) {
+				    if($this->getCpsAntiHack($damager) >= $this->getConfig()->get("cps_hacking")) {
 					    $entity->sendMessage($this->title . $this->getConfig()->get("message_hacking"));
 					    $event->setCancelled(true);
-					}
 				}
 				
 				if(!$damager->hasPermission('hacker.hack')) { // Don't change it!
